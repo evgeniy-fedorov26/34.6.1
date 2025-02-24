@@ -30,7 +30,8 @@ func main() {
 	// Разбиваем файл на строки
 	lines := strings.Split(string(data), "\n")
 	// Регулярное выражение для поиска математических выражений
-	regex := regexp.MustCompile(`^(\d+)([+-])(\d+)=\?$`)
+	// Учтены 3 группы захвата: первое число, оператор (+ или -), второе число
+	regex := regexp.MustCompile(`^(\d+)\s*([+-])\s*(\d+)=\?$`)
 
 	// Создаем (или очищаем) выходной файл
 	outFile, err := os.Create(outputFile)
